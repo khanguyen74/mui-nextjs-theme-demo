@@ -141,10 +141,12 @@ const ThemeModeContext = createContext<ThemeContextType>({
 
 // expand the palette to include an accent color
 declare module '@mui/material' {
+  // eslint-disable-next-line no-unused-vars
   interface PaletteOptions {
     accent?: PaletteColorOptions;
   }
 
+  // eslint-disable-next-line no-unused-vars
   interface ButtonPropsColorOverrides {
     accent: true;
   }
