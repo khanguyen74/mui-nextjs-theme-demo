@@ -1,7 +1,10 @@
+import { cookies } from 'next/headers';
 import { Header, ThemedComponentsShowcase, ThemeToggle } from '@/components';
 import { Box, Typography } from '@mui/material';
 
-export default function Home() {
+export default async function Home() {
+  const cookieStore = await cookies();
+  let mode = cookieStore.get('mode')?.value as 'dark' | 'light';
   return (
     <>
       <Header />
@@ -10,7 +13,7 @@ export default function Home() {
           Toggle the theme to see the changes. Theme should persist on page
           reload.
         </Typography>
-        <ThemeToggle />
+        <ThemeToggle defaultMode={mode} />
         <ThemedComponentsShowcase />
       </Box>
     </>

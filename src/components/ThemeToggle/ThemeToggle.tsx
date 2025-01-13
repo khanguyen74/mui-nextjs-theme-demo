@@ -9,13 +9,25 @@ import {
   useThemeContext,
 } from '../ThemeProviderWrapper/ThemeProviderWrapper';
 
-const ThemeToggle = () => {
+type ThemeToggleProps = {
+  defaultMode: 'dark' | 'light';
+};
+
+const ThemeToggle = ({ defaultMode }: ThemeToggleProps) => {
   const { mode, setMode } = useColorScheme();
   const { setTheme } = useThemeContext();
   const handleThemeChange = (theme: Theme) => {
     setTheme(theme);
     Cookie.set('theme', theme);
   };
+
+  const handleSwitchMode = (mode: 'dark' | 'light') => {
+    setMode(mode);
+    Cookie.set('mode', mode);
+  };
+
+  let currentMode = mode ?? defaultMode;
+
   return (
     <Box
       sx={{
@@ -28,8 +40,9 @@ const ThemeToggle = () => {
           variant="contained"
           onClick={() => handleThemeChange('default')}
           sx={{
-            backgroundColor: mode === 'dark' ? '#abbccf' : '#304154',
-            color: mode === 'dark' ? 'rgb(7, 15, 24)' : 'rgb(231, 239, 248)',
+            backgroundColor: currentMode === 'dark' ? '#abbccf' : '#304154',
+            color:
+              currentMode === 'dark' ? 'rgb(7, 15, 24)' : 'rgb(231, 239, 248)',
           }}
         >
           Default Theme
@@ -38,8 +51,8 @@ const ThemeToggle = () => {
           variant="contained"
           onClick={() => handleThemeChange('secondTheme')}
           sx={{
-            backgroundColor: mode === 'dark' ? '#dd7d08' : '#eb6d1e',
-            color: mode === 'dark' ? 'rgb(1, 1, 4)' : '#191310',
+            backgroundColor: currentMode === 'dark' ? '#dd7d08' : '#eb6d1e',
+            color: currentMode === 'dark' ? 'rgb(1, 1, 4)' : '#191310',
           }}
         >
           Second Theme
@@ -55,8 +68,10 @@ const ThemeToggle = () => {
       >
         <LightModeOutlinedIcon />
         <Switch
-          checked={mode === 'dark'}
-          onChange={() => setMode(mode === 'dark' ? 'light' : 'dark')}
+          checked={currentMode === 'dark'}
+          onChange={() =>
+            handleSwitchMode(currentMode === 'dark' ? 'light' : 'dark')
+          }
           name="theme"
           inputProps={{ 'aria-label': 'toggle theme' }}
         />
