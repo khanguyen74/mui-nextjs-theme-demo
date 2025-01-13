@@ -14,7 +14,7 @@ const Header = () => {
       <Typography variant="h3">Demo</Typography>
       <IconButton
         sx={{ width: '40px', height: '40px' }}
-        href="https://github.com/khanguyen74"
+        href="https://github.com/khanguyen74/mui-nextjs-theme-demo"
         target="_blank"
       >
         <GitHubIcon color="primary" />

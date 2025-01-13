@@ -19,7 +19,12 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   const cookieStore = await cookies();
-  const theme: Theme = (cookieStore.get('theme')?.value as Theme) || 'default';
+  let theme = cookieStore.get('theme')?.value as Theme;
+
+  // make sure the theme is valid
+  if (!['default', 'secondTheme'].includes(theme)) {
+    theme = 'default';
+  }
 
   return (
     <html lang="en" suppressHydrationWarning>

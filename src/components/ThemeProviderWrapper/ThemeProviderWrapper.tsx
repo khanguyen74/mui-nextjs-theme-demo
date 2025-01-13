@@ -9,7 +9,7 @@ import {
 
 // Define themes
 const themes = {
-  sunrise: createTheme({
+  secondTheme: createTheme({
     cssVariables: {
       colorSchemeSelector: 'class',
     },
