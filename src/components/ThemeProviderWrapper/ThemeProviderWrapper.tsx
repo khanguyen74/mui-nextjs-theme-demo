@@ -24,6 +24,10 @@ const themes = {
             main: '#686841',
             contrastText: '#efe9e6',
           },
+          accent: {
+            main: '#438478',
+            contrastText: 'rgb(10, 8, 5)',
+          },
           divider: '#a6ae7e',
           text: {
             primary: 'rgb(239, 233, 230)',
@@ -44,6 +48,10 @@ const themes = {
           secondary: {
             main: '#bebe97',
             contrastText: '#191310',
+          },
+          accent: {
+            main: '#7bbcb0',
+            contrastText: 'rgb(27, 19, 14)',
           },
           divider: '#798151',
           text: {
